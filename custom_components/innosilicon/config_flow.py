@@ -65,15 +65,18 @@ class InnosiliconConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     @staticmethod
     @callback
     def async_get_options_flow(config_entry):
-        return InnosiliconOptionsFlow()
+        return InnosiliconOptionsFlow(config_entry)
 
 
 class InnosiliconOptionsFlow(config_entries.OptionsFlow):
+    def __init__(self, config_entry) -> None:
+        self._config_entry = config_entry
+
     async def async_step_init(self, user_input=None):
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
-        options = self.config_entry.options
+        options = self._config_entry.options
         schema = vol.Schema(
             {
                 vol.Optional(CONF_POOL_1_URL, default=options.get(CONF_POOL_1_URL, "")): str,

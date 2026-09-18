@@ -129,6 +129,8 @@ Pour ouvrir ces options dans Home Assistant :
 
 Une fois les options enregistrees, utilisez le bouton `Appliquer les pools` pour envoyer la configuration au mineur.
 
+Si le bouton `Configurer` n'apparait pas apres une mise a jour, rechargez l'integration ou redemarrez Home Assistant afin que le nouveau flow d'options soit charge.
+
 ## Carte Lovelace
 
 Exemple de carte `entities` pour afficher les informations principales du mineur :
@@ -180,7 +182,14 @@ La carte affiche un resume lisible du mineur :
 
 ## Historique
 
-### v0.2.1 - En cours
+### v0.2.2 - En cours
+
+- Ajout des assets `brand/icon.png` et `brand/logo.png` a la racine du depot pour ameliorer la detection HACS.
+- Ajout des variantes `icon@2x.png` et `logo@2x.png` dans le dossier `brand` de l'integration.
+- Correction de compatibilite du flow d'options pour afficher les champs de configuration des pools sur une entree existante.
+- Ajout d'une note de rechargement/redemarrage Home Assistant si le bouton `Configurer` n'apparait pas apres mise a jour.
+
+### v0.2.1
 
 - Correction de l'emplacement de l'icone locale avec le dossier `brand/` attendu par Home Assistant.
 - Ajustement du flow d'options pour la configuration des pools.
@@ -215,4 +224,4 @@ La carte affiche un resume lisible du mineur :
 
 ## Version
 
-Version actuelle : `0.2.1`.
+Version actuelle : `0.2.2`.
