@@ -3,6 +3,7 @@ from __future__ import annotations
 import voluptuous as vol
 
 from homeassistant import config_entries
+from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .api import InnosiliconApi, InnosiliconApiError, InnosiliconAuthError
@@ -62,14 +63,12 @@ class InnosiliconConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return self.async_show_form(step_id="user", data_schema=schema, errors=errors)
 
     @staticmethod
+    @callback
     def async_get_options_flow(config_entry):
-        return InnosiliconOptionsFlow(config_entry)
+        return InnosiliconOptionsFlow()
 
 
 class InnosiliconOptionsFlow(config_entries.OptionsFlow):
-    def __init__(self, config_entry):
-        self.config_entry = config_entry
-
     async def async_step_init(self, user_input=None):
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)

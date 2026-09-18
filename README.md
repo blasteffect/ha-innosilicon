@@ -120,6 +120,13 @@ Depuis les options de l'integration, vous pouvez renseigner jusqu'a trois pools 
 - utilisateur
 - mot de passe
 
+Pour ouvrir ces options dans Home Assistant :
+
+1. Ouvrez `Parametres` > `Appareils et services`.
+2. Ouvrez l'integration `Innosilicon Miner`.
+3. Ouvrez le menu de l'entree du mineur.
+4. Cliquez sur `Configurer`.
+
 Une fois les options enregistrees, utilisez le bouton `Appliquer les pools` pour envoyer la configuration au mineur.
 
 ## Carte Lovelace
@@ -173,7 +180,13 @@ La carte affiche un resume lisible du mineur :
 
 ## Historique
 
-### v0.2.0 - En cours
+### v0.2.1 - En cours
+
+- Correction de l'emplacement de l'icone locale avec le dossier `brand/` attendu par Home Assistant.
+- Ajustement du flow d'options pour la configuration des pools.
+- Documentation de l'acces aux options de configuration des pools dans Home Assistant.
+
+### v0.2.0
 
 - Ajout des capteurs de hashrate moyen 1 minute, 5 minutes et 15 minutes.
 - Ajout des capteurs de detail des pools : URL, utilisateur, statut, accepted et rejected.
@@ -202,4 +215,4 @@ La carte affiche un resume lisible du mineur :
 
 ## Version
 
-Version actuelle : `0.2.0`.
+Version actuelle : `0.2.1`.
