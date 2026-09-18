@@ -4,10 +4,38 @@
       "user": {
         "title": "Ajouter un mineur Innosilicon",
         "description": "Saisissez l'adresse du mineur et ses identifiants.",
-        "data": {"host": "Adresse IP ou nom DNS", "username": "Utilisateur", "password": "Mot de passe"}
+        "data": {
+          "host": "Adresse IP ou nom DNS",
+          "username": "Utilisateur",
+          "password": "Mot de passe"
+        }
       }
     },
-    "error": {"cannot_connect": "Impossible de se connecter au mineur.", "invalid_auth": "Utilisateur ou mot de passe incorrect."},
-    "abort": {"already_configured": "Ce mineur est déjà configuré."}
+    "error": {
+      "cannot_connect": "Impossible de se connecter au mineur.",
+      "invalid_auth": "Utilisateur ou mot de passe incorrect."
+    },
+    "abort": {
+      "already_configured": "Ce mineur est déjà configuré."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Configurer les pools",
+        "description": "Renseignez jusqu'a trois pools. Utilisez ensuite le bouton Appliquer les pools pour envoyer la configuration au mineur.",
+        "data": {
+          "pool_1_url": "Pool 1 URL",
+          "pool_1_username": "Pool 1 utilisateur",
+          "pool_1_password": "Pool 1 mot de passe",
+          "pool_2_url": "Pool 2 URL",
+          "pool_2_username": "Pool 2 utilisateur",
+          "pool_2_password": "Pool 2 mot de passe",
+          "pool_3_url": "Pool 3 URL",
+          "pool_3_username": "Pool 3 utilisateur",
+          "pool_3_password": "Pool 3 mot de passe"
+        }
+      }
+    }
   }
 }

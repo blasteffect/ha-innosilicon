@@ -6,7 +6,22 @@ from homeassistant import config_entries
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .api import InnosiliconApi, InnosiliconApiError, InnosiliconAuthError
-from .const import CONF_HOST, CONF_PASSWORD, CONF_USERNAME, DEFAULT_USERNAME, DOMAIN
+from .const import (
+    CONF_HOST,
+    CONF_PASSWORD,
+    CONF_POOL_1_PASSWORD,
+    CONF_POOL_1_URL,
+    CONF_POOL_1_USERNAME,
+    CONF_POOL_2_PASSWORD,
+    CONF_POOL_2_URL,
+    CONF_POOL_2_USERNAME,
+    CONF_POOL_3_PASSWORD,
+    CONF_POOL_3_URL,
+    CONF_POOL_3_USERNAME,
+    CONF_USERNAME,
+    DEFAULT_USERNAME,
+    DOMAIN,
+)
 
 
 class InnosiliconConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
@@ -45,3 +60,32 @@ class InnosiliconConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             }
         )
         return self.async_show_form(step_id="user", data_schema=schema, errors=errors)
+
+    @staticmethod
+    def async_get_options_flow(config_entry):
+        return InnosiliconOptionsFlow(config_entry)
+
+
+class InnosiliconOptionsFlow(config_entries.OptionsFlow):
+    def __init__(self, config_entry):
+        self.config_entry = config_entry
+
+    async def async_step_init(self, user_input=None):
+        if user_input is not None:
+            return self.async_create_entry(title="", data=user_input)
+
+        options = self.config_entry.options
+        schema = vol.Schema(
+            {
+                vol.Optional(CONF_POOL_1_URL, default=options.get(CONF_POOL_1_URL, "")): str,
+                vol.Optional(CONF_POOL_1_USERNAME, default=options.get(CONF_POOL_1_USERNAME, "")): str,
+                vol.Optional(CONF_POOL_1_PASSWORD, default=options.get(CONF_POOL_1_PASSWORD, "")): str,
+                vol.Optional(CONF_POOL_2_URL, default=options.get(CONF_POOL_2_URL, "")): str,
+                vol.Optional(CONF_POOL_2_USERNAME, default=options.get(CONF_POOL_2_USERNAME, "")): str,
+                vol.Optional(CONF_POOL_2_PASSWORD, default=options.get(CONF_POOL_2_PASSWORD, "")): str,
+                vol.Optional(CONF_POOL_3_URL, default=options.get(CONF_POOL_3_URL, "")): str,
+                vol.Optional(CONF_POOL_3_USERNAME, default=options.get(CONF_POOL_3_USERNAME, "")): str,
+                vol.Optional(CONF_POOL_3_PASSWORD, default=options.get(CONF_POOL_3_PASSWORD, "")): str,
+            }
+        )
+        return self.async_show_form(step_id="init", data_schema=schema)
